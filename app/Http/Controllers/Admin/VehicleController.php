@@ -12,11 +12,18 @@ class VehicleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vehicles = Vehicle::all();
+        $types = ['Car', 'Van', 'Scooter', 'Bike'];
+
+        if ($request->type) {
+            $vehicles = Vehicle::where('type', $request->type)->get();
+        } else {
+            $vehicles = Vehicle::all();
+        }
+
         // dd($vehicles);
-        return view('vehicles.index', compact('vehicles'));
+        return view('vehicles.index', compact('vehicles', 'types'));
     }
 
     /**

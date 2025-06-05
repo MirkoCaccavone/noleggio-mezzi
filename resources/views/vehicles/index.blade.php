@@ -11,6 +11,24 @@
         <h1>Vehicles List</h1>
         <a href="{{ route('admin.vehicles.create') }}" class="btn btn-success">Add New Vehicle</a>
     </div>
+    
+        <form action="{{ route('admin.vehicles.index') }}" method="GET" class="mb-3">
+            <div class="row">
+                <div class="col-auto">
+                    <select name="type" class="form-select">
+                        <option value="">All Types</option>
+                        @foreach($types as $type)
+                            <option value="{{ $type }}" {{ request('type') == $type ? 'selected' : '' }}>
+                                {{ $type }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
 
     @if ($vehicles->count())
         <table class="table table-bordered table-hover align-middle">
