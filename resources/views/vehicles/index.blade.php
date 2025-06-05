@@ -1,17 +1,25 @@
+{{-- import layout --}}
 @extends('layouts.projects')
 
+{{-- import file for bootstrap --}}
 @section('vite')
     @vite( 'resources/js/app.js')
 @endsection
 
+{{-- content --}}
 @section('content')
 
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
+
+        {{-- title --}}
         <h1>Vehicles List</h1>
+
+        {{-- new vehicle button --}}
         <a href="{{ route('admin.vehicles.create') }}" class="btn btn-success">Add New Vehicle</a>
     </div>
     
+        {{-- form for type filter  --}}
         <form action="{{ route('admin.vehicles.index') }}" method="GET" class="mb-3">
             <div class="row">
                 <div class="col-auto">
@@ -30,11 +38,11 @@
             </div>
         </form>
 
+
     @if ($vehicles->count())
         <table class="table table-bordered table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th>ID</th>
                     <th>Image</th>
                     <th>Brand / Model</th>
                     <th>Type</th>
@@ -45,9 +53,9 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($vehicles as $vehicle)
                     <tr>
-                        <td>{{ $vehicle->id }}</td>
                         <td>
                             <img src="{{asset('storage/' . $vehicle->image)}}" alt="{{ $vehicle->brand }}" style="width: 100px; height: auto;">
                         </td>
@@ -60,13 +68,18 @@
                                 {{ $vehicle->available ? 'Available' : 'Not Available' }}
                             </span>
                         </td>
+
+                        {{-- actions button --}}
                         <td>
-                            <a href="{{ route('admin.vehicles.show', $vehicle->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('admin.vehicles.edit', $vehicle->id) }}" class="btn btn-sm btn-primary">Edit</a>
+
+                            <a href="{{ route('admin.vehicles.show', $vehicle->id) }}" class="btn btn-sm btn-info mx-1">View</a>
+
+                            <a href="{{ route('admin.vehicles.edit', $vehicle->id) }}" class="btn btn-sm btn-primary mx-1">Edit</a>
+
                             <form action="{{ route('admin.vehicles.destroy', $vehicle->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                <button class="btn btn-sm btn-danger mx-1">Delete</button>
                             </form>
                         </td>
                     </tr>
