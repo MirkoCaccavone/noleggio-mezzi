@@ -1,8 +1,4 @@
-@extends('layouts.projects')
-
-@section('vite')
-    @vite( 'resources/js/app.js')
-@endsection
+@extends('layouts.app')
 
 @section('content')
 <div class="container py-5">

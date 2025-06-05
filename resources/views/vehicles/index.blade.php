@@ -1,10 +1,6 @@
 {{-- import layout --}}
-@extends('layouts.projects')
+@extends('layouts.app')
 
-{{-- import file for bootstrap --}}
-@section('vite')
-    @vite( 'resources/js/app.js')
-@endsection
 
 {{-- content --}}
 @section('content')

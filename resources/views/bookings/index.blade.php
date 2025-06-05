@@ -1,10 +1,10 @@
 {{-- import layout --}}
-@extends('layouts.projects')
+@extends('layouts.app')
 
 {{-- import file for bootstrap --}}
-@section('vite')
+{{-- @section('vite')
     @vite( 'resources/js/app.js')
-@endsection
+@endsection --}}
 
 {{-- content --}}
 @section('content')
@@ -66,7 +66,7 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{{ route('admin.bookings.show', $booking->id) }}" class="btn btn-sm btn-info">View</a>
+                            {{-- <a href="{{ route('admin.bookings.show', $booking->id) }}" class="btn btn-sm btn-info">View</a> --}}
                             <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Sei sicuro di voler cancellare questa prenotazione?');">
                                 @csrf
                                 @method('DELETE')
