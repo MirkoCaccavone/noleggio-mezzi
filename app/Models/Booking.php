@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
+    // usiamo il campo $fillable per proteggere il modello da assegnazioni di massa non volute
     protected $fillable = [
         'vehicle_id',
         'customer_name',

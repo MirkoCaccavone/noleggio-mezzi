@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model
 {
+    // usiamo il campo $fillable per proteggere il modello da assegnazioni di massa non volute
     protected $fillable = [
         'type',
         'brand',

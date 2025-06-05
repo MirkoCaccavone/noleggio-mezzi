@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,9 @@ Route::middleware((['auth', 'verified']))
             ->name('profile');
 
         Route::resource('vehicles', VehicleController::class)
+            ->middleware(['auth', 'verified']);
+
+        Route::resource('bookings', BookingController::class)
             ->middleware(['auth', 'verified']);
     });
 require __DIR__ . '/auth.php';
