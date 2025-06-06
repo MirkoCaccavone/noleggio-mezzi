@@ -57,7 +57,9 @@
                         </td>
                         <td>{{ $vehicle->brand }} {{ $vehicle->model }}</td>
                         <td>{{ $vehicle->type }}</td>
-                        <td>{{ $vehicle->plate }}</td>
+                        <td>
+                            {{ $vehicle->type != 'Bike' ? $vehicle->plate : 'N.D' }}
+                            </td>
                         <td>€{{ number_format($vehicle->price_per_day, 2) }}</td>
                         <td>
                             <span class="badge bg-{{ $vehicle->available ? 'success' : 'danger' }}">

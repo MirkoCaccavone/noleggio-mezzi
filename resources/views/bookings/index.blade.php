@@ -1,10 +1,6 @@
 {{-- import layout --}}
 @extends('layouts.app')
 
-{{-- import file for bootstrap --}}
-{{-- @section('vite')
-    @vite( 'resources/js/app.js')
-@endsection --}}
 
 {{-- content --}}
 @section('content')
@@ -13,11 +9,11 @@
 
     <form method="GET" action="{{ route('admin.bookings.index') }}" class="row g-3 mb-4 align-items-end">
         <div class="col-md-3">
-            <label for="start_date" class="form-label">Data inizio da:</label>
+            <label for="start_date" class="form-label">Data inizio:</label>
             <input type="date" name="start_date" id="start_date" class="form-control" value="{{ request('start_date') }}">
         </div>
         <div class="col-md-3">
-            <label for="end_date" class="form-label">Data fine fino a:</label>
+            <label for="end_date" class="form-label">Data fine:</label>
             <input type="date" name="end_date" id="end_date" class="form-control" value="{{ request('end_date') }}">
         </div>
         <div class="col-md-3">
