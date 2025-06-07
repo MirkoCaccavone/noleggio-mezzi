@@ -57,6 +57,10 @@
             @if($vehicle->image)
                 <div class="mb-2">
                     <img src="{{ asset('storage/' . $vehicle->image) }}" alt="Preview" style="max-height: 200px; max-width: 200px;">
+                    <div class="form-check mt-2">
+                        <input type="checkbox" name="remove_image" id="remove_image" class="form-check-input">
+                        <label for="remove_image" class="form-check-label">Remove current image</label>
+                    </div>
                 </div>
             @endif
             <input type="file" name="image" id="image" class="form-control">

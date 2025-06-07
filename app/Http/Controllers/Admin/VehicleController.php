@@ -100,11 +100,15 @@ class VehicleController extends Controller
 
         if (array_key_exists('image', $data)) {
 
-            Storage::delete($vehicle->image);
+            if ($vehicle->image) {
+                Storage::delete($vehicle->image);
+            }
 
             $img_url = Storage::putFile('uploads', $data['image']);
-
             $vehicle->image = $img_url;
+        } elseif ($request->has('remove_image') && $vehicle->image) {
+            Storage::delete($vehicle->image);
+            $vehicle->image = null;
         }
 
         $vehicle->update();
