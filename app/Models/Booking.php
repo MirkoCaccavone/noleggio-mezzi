@@ -16,6 +16,7 @@ class Booking extends Model
         'status',
     ];
 
+    // Relazione: una prenotazione appartiene a un veicolo
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);

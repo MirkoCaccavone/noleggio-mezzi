@@ -18,6 +18,7 @@ class Vehicle extends Model
         'image',
     ];
 
+    // Relazione: un veicolo può avere molte prenotazioni
     public function bookings()
     {
         return $this->hasMany(Booking::class);

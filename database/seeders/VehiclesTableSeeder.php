@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Vehicle;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use Faker\Generator as Faker;
@@ -11,11 +10,11 @@ use Faker\Generator as Faker;
 class VehiclesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Popola la tabella vehicles con dati fittizi.
      */
     public function run(Faker $faker): void
     {
-
+        // Dati di esempio per tipi, marche e modelli di veicoli
         $vehiclesData = [
             'Car' => [
                 'Toyota' => ['Yaris', 'Corolla', 'Camry'],
@@ -36,6 +35,7 @@ class VehiclesTableSeeder extends Seeder
             ],
         ];
 
+        // Crea 30 veicoli casuali
         foreach (range(1, 30) as $i) {
             $type = $faker->randomElement(array_keys($vehiclesData));
             $brand = $faker->randomElement(array_keys($vehiclesData[$type]));
@@ -48,7 +48,7 @@ class VehiclesTableSeeder extends Seeder
             $vehicle->plate = strtoupper($faker->bothify('??###??'));
             $vehicle->description = $faker->sentence(10);
             $vehicle->price_per_day = $faker->randomFloat(2, 20, 150);
-            $vehicle->available = $faker->boolean(80);
+            $vehicle->available = $faker->boolean(80); // 80% di probabilità che sia disponibile
             $vehicle->image = $faker->imageUrl(640, 480, 'transport', true);
 
             $vehicle->save();
