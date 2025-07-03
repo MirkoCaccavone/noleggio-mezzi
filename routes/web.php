@@ -39,12 +39,12 @@ Route::middleware((['auth', 'verified']))
             ->name('profile');
 
         // CRUD veicoli
-        Route::resource('vehicles', VehicleController::class)
-            ->middleware(['auth', 'verified']);
+        Route::resource('vehicles', VehicleController::class);
+        // ->middleware(['auth', 'verified']);
 
         // CRUD prenotazioni
-        Route::resource('bookings', BookingController::class)
-            ->middleware(['auth', 'verified']);
+        Route::resource('bookings', BookingController::class);
+        // ->middleware(['auth', 'verified']);
     });
 
 // Rotte di autenticazione (login, register, ecc.)

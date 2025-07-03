@@ -26,8 +26,7 @@ class VehicleController extends Controller
     }
 
     /**
-     * Permette di cercare veicoli per marca o modello tramite una query string 'q'.
-     * Esempio: /api/vehicles/search?q=ford
+     * Permette di cercare veicoli per marca o modello tramite una query string 'q'
      */
     public function search(Request $request)
     {
@@ -80,6 +79,7 @@ class VehicleController extends Controller
             $current = Carbon::parse($booking->start_date);
             $end = Carbon::parse($booking->end_date);
 
+            // Ciclo while che continua fino a quando la data corrente è <= alla data di fine.
             while ($current->lte($end)) {
                 $bookedDates[] = $current->toDateString(); // Aggiunge la data nel formato 'YYYY-MM-DD'
                 $current->addDay(); // Passa al giorno successivo
@@ -114,6 +114,7 @@ class VehicleController extends Controller
             ]);
         }
 
+        // Converte le date con Carbon
         $startDate = Carbon::parse($request->start_date);
         $endDate = Carbon::parse($request->end_date);
 
